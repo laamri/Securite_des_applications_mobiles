@@ -46,6 +46,18 @@ brew install android-platform-tools
 # Ajouter le dossier au PATH système
 ```
 
+---
+
+## 🎬 Demo Video
+
+
+
+https://github.com/user-attachments/assets/9c7c8496-393e-4f97-8d99-f142e68df7b9
+
+
+
+---
+
 ### Activer le débogage USB sur l'appareil Android
 
 1. Aller dans **Paramètres → À propos du téléphone**
