@@ -45,6 +45,12 @@ APK (archive ZIP)
 
 > **Rappel :** Un APK est une archive ZIP standard. Toute l'analyse statique repose sur la décompilation de ces fichiers sans jamais exécuter l'application.
 
+
+
+
+https://github.com/user-attachments/assets/87df2c84-6bf2-46bb-8f9c-093cfed118ce
+
+
 ---
 
 ## Objectifs pédagogiques
