@@ -17,7 +17,10 @@
 > Une vidéo de démonstration complète du processus de résolution est disponible ci-dessous.
 
 <!-- Remplacer l'URL par le lien réel de votre vidéo -->
-[![Regarder la démo](https://img.shields.io/badge/▶%20Watch%20Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=VOTRE_VIDEO_ID)
+
+
+https://github.com/user-attachments/assets/33dfdfe9-15b6-46ef-9ae8-dcb37690f2e7
+
 
 **Ce que couvre la vidéo :**
 - Ouverture de l'APK dans JADX-GUI et inspection du manifest
@@ -26,16 +29,7 @@
 - Chargement et analyse dans Ghidra
 - Identification de la chaîne secrète en clair
 
-> 💡 Pour intégrer une vidéo hébergée localement, remplacez le badge par :
-> ```markdown
-> ![Démo](chemin/vers/votre/video.gif)
-> ```
-> Ou pour une vidéo GitHub :
-> ```html
-> <video src="chemin/vers/demo.mp4" controls width="100%"></video>
-> ```
 
----
 
 ## Étape 1 — Analyse du AndroidManifest.xml
 
