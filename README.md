@@ -1,7 +1,7 @@
 # 🔍 Lab 4 — Analyse Statique d'un APK
 
 > **Cours : Sécurité des Applications Mobiles**  
-> Durée estimée : ~2h | Niveau : Intermédiaire
+
 
 ---
 
