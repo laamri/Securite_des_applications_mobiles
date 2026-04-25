@@ -10,6 +10,9 @@
 | **🔑 Chaîne secrète** | `Thanks for all the fish` |
 | **📋 Méthode** | Analyse statique Java + décompilation native |
 
+
+[uncrackble2_rapport.pdf](https://github.com/user-attachments/files/27085050/uncrackble2_rapport.pdf)
+
 ---
 
 ## 🎬 Démonstration Vidéo
