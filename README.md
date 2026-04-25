@@ -116,7 +116,7 @@ APK (archive ZIP)
 
 ## Déroulement du Lab
 
-### Task 1 — Préparer le workspace (10 min)
+### Task 1 — Préparer le workspace 
 
 Créez une structure de répertoires claire pour organiser votre travail :
 
@@ -146,7 +146,7 @@ keytool -printcert -jarfile app-debug.apk
 
 ---
 
-### Task 2 — Extraire l'APK (5-10 min)
+### Task 2 — Extraire l'APK 
 
 Un APK est une archive ZIP. Vous pouvez l'inspecter directement :
 
@@ -166,7 +166,7 @@ Fichiers clés à repérer :
 
 ---
 
-### Task 3 — Analyse avec JADX GUI (20-30 min)
+### Task 3 — Analyse avec JADX GUI 
 
 **Objectif :** Explorer la structure de l'APK et analyser son manifeste.
 
@@ -226,7 +226,7 @@ Resources/
 
 ---
 
-### Task 4 — Recherche de chaînes sensibles (15-20 min)
+### Task 4 — Recherche de chaînes sensibles 
 
 **Objectif :** Identifier les informations sensibles codées en dur.
 
@@ -289,7 +289,7 @@ Observation #X
 
 ---
 
-### Task 5 — Convertir DEX → JAR avec dex2jar (15-20 min)
+### Task 5 — Convertir DEX → JAR avec dex2jar 
 
 **Objectif :** Convertir le bytecode Dalvik en JAR pour analyse complémentaire.
 
@@ -325,7 +325,7 @@ file output.jar  # doit afficher "Java archive data (JAR)"
 
 ---
 
-### Task 6 — Comparaison JADX vs JD-GUI (15-20 min)
+### Task 6 — Comparaison JADX vs JD-GUI 
 
 **Objectif :** Comprendre les différences entre les deux outils de décompilation.
 
@@ -354,7 +354,7 @@ java -jar jd-gui.jar output.jar
 
 ---
 
-### Task 7 — Rédiger le mini-rapport (20-30 min)
+### Task 7 — Rédiger le mini-rapport
 
 **Objectif :** Produire un rapport d'audit structuré et professionnel.
 
@@ -400,7 +400,7 @@ RAPPORT D'AUDIT STATIQUE — [Nom de l'App]
 
 ---
 
-### Task 8 — Nettoyage (5 min)
+### Task 8 — Nettoyage 
 
 ```bash
 # Supprimer les fichiers temporaires sensibles
