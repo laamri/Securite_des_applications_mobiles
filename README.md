@@ -35,7 +35,9 @@ frida-ps -U
 ```
 <img width="1019" height="414" alt="image" src="https://github.com/user-attachments/assets/0e53fb46-4d99-49cb-855d-a99d953549c5" />
 
-<img width="1080" height="2280" alt="image" src="https://github.com/user-attachments/assets/d40d084c-cf7a-4897-b79b-394ccfeaf383" />
+----
+
+<img width="2402" height="1297" alt="image" src="https://github.com/user-attachments/assets/6e78ac8a-d5a3-4baa-b07a-4a1420c41a00" />
 
 **Package name:** `com.pwnsec.firestorm`
 
