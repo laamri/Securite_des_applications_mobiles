@@ -1,7 +1,6 @@
 # LAB 6 — Analyse statique d'un APK avec MobSF dans la VM Mobexler
 
 > **Cours :** Sécurité des applications mobiles  
-> **Durée estimée :** ~2h  
 > **Environnement :** VM Mobexler
 
 ---
@@ -41,6 +40,7 @@
 ## Vue d'ensemble
 
 Ce lab introduit l'**analyse statique d'APK** à l'aide de **MobSF (Mobile Security Framework)**, un outil open-source d'analyse automatisée de sécurité mobile. L'analyse statique permet d'examiner une application sans l'exécuter, en inspectant son code, ses ressources, son manifeste et sa configuration.
+<img width="1360" height="811" alt="image" src="https://github.com/user-attachments/assets/301a7ade-3ed0-4707-8081-8fe7f64eb28a" />
 
 ---
 
