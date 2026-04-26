@@ -11,6 +11,14 @@
 - Diagnose common installation issues
 
 ---
+## video  de lab:
+https://github.com/user-attachments/assets/f34b4f15-43b0-4fff-8be3-81c9f799001c
+
+
+
+---
+
+
 
 ## Step 1 — Install Frida Client (PC Side)
 
