@@ -19,6 +19,12 @@
 > **L'émulateur DOIT être lancé AVANT MobSF.**  
 > Sinon → `Dynamic Analysis Failed`
 
+
+
+
+https://github.com/user-attachments/assets/243d5447-fc48-48b5-9a85-af04efae04c5
+
+
 ---
 
 ## ✅ Séquence complète (copier-coller dans l'ordre)
