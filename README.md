@@ -164,6 +164,66 @@ exit
 
 ---
 
+🔴 Fix : Multiple emulators — même AVD déjà en cours
+Erreur :
+FATAL | Running multiple emulators with the same AVD
+Cause : Une instance de l'émulateur tourne déjà (fenêtre cachée, terminal précédent, etc.)
+Fix :
+powershell# 1. Voir les devices actifs
+adb devices
+
+# 2. Tuer l'instance existante (remplacer emulator-5554 si nécessaire)
+adb -s emulator-5554 emu kill
+
+Ou simplement fermer tous les émulateurs ouverts avant de relancer le script.
+
+### Scripts Frida disponibles par défaut
+ 
+| Script | Utilité |
+|--------|---------|
+| **API Monitoring** | Trace les appels API sensibles |
+| **SSL Pinning Bypass** | Contourne l'épinglage de certificat |
+| **Root Detection Bypass** | Bypass la détection de root |
+| **Debugger Check Bypass** | Contourne les anti-debug |
+| **Clipboard Monitor** | Surveille le presse-papiers |
+| **Emulator Detection Bypass** | Contourne la détection d'émulateur |
+ 
+### Modes d'injection Frida
+ 
+```
+Spawn & Inject   →  Lance l'appli depuis zéro ET injecte le script
+Inject           →  Injecte dans le processus déjà démarré
+Attach           →  S'attache à un processus existant
+```
+ 
+### Outils complémentaires dans l'interface dynamique
+ 
+| Onglet | Utilité |
+|--------|---------|
+| **HTTP(S) Traffic** | Observer tout le trafic réseau de l'app |
+| **Logcat Logs** | Logs Android en temps réel |
+| **Dumpsys Logs** | Informations système (batterie, mémoire, activités…) |
+| **Application Data** | Examiner les fichiers internes de l'app |
+| **Shell Access** | Shell direct dans l'environnement Android |
+ 
+### Tests TLS/SSL disponibles
+ 
+| Test | Ce qu'il vérifie |
+|------|-----------------|
+| TLS Misconfiguration Test | Mauvaise config TLS/SSL |
+| TLS Pinning / Certificate Transparency Test | Présence du pinning |
+| TLS Pinning Bypass Test | Possibilité de bypasser le pinning |
+| Cleartext Traffic Test | Trafic HTTP non chiffré |
+ 
+### Ce que l'analyse statique fournit
+ 
+- Score de sécurité global
+- Activités / Services / Receivers / Providers exportés
+- Manifeste Android décodé
+- Code Java décompilé + Smali
+- Hard-coded secrets détectés
+
+
 ## 🔗 Ressources
 
 - MobSF GitHub : https://github.com/MobSF/Mobile-Security-Framework-MobSF
