@@ -125,6 +125,7 @@ cd ~/tools/Mobile-Security-Framework-MobSF
 ```bash
 echo "MobSF version : [version affichée]" >> ~/apk_analysis/$(date +%Y-%m-%d)/analyse_info.txt
 ```
+<img width="2543" height="1285" alt="image" src="https://github.com/user-attachments/assets/317041ad-c4b2-4d19-b478-0804273e519e" />
 
 ### À observer
 
