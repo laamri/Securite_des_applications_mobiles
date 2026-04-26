@@ -31,8 +31,11 @@ Push the APK to the emulator and confirm the package name using Frida:
 
 ```bash
 adb install FireStorm.apk
-python -m frida_tools.ps -Uai
+frida-ps -U
 ```
+<img width="1019" height="414" alt="image" src="https://github.com/user-attachments/assets/0e53fb46-4d99-49cb-855d-a99d953549c5" />
+
+<img width="1080" height="2280" alt="image" src="https://github.com/user-attachments/assets/d40d084c-cf7a-4897-b79b-394ccfeaf383" />
 
 **Package name:** `com.pwnsec.firestorm`
 
@@ -60,6 +63,8 @@ public String Password() {
     return generateRandomString(String.valueOf(sb));
 }
 ```
+<img width="2240" height="1313" alt="image" src="https://github.com/user-attachments/assets/0baba86c-7480-4d72-8494-876d5cc4be82" />
+
 
 **Firebase config extracted from `strings.xml`:**
 
@@ -68,6 +73,7 @@ public String Password() {
 <string name="firebase_email">TK757567@pwnsec.xyz</string>
 <string name="firebase_database_url">https://firestorm-9d3db-default-rtdb.firebaseio.com</string>
 ```
+<img width="1284" height="686" alt="image" src="https://github.com/user-attachments/assets/8779b212-5cbe-4f0b-bd14-d126299f39bd" />
 
 > ⚠️ The password changes at every app launch because of the native random component — always run Frida fresh.
 
@@ -121,6 +127,7 @@ python -m frida_tools.repl -U -f com.pwnsec.firestorm -l frida_firestorm.js
 ```
 
 Note the password printed in the console — you will need it in the next step.
+<img width="1457" height="473" alt="image" src="https://github.com/user-attachments/assets/77e90d2d-24f2-4249-a0dc-8bfaffec3076" />
 
 ---
 
@@ -155,6 +162,7 @@ print(flag_data.val())
 ```bash
 python get_flag.py
 ```
+<img width="1442" height="181" alt="image" src="https://github.com/user-attachments/assets/2ed68f82-9634-4057-9490-d4a082b56f2a" />
 
 ---
 
