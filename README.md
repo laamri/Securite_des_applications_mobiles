@@ -4,17 +4,10 @@
 
 Une vidéo de démonstration complète est disponible, montrant l'ensemble du processus étape par étape :
 
-> **📹 Contenu de la vidéo :**
->
-> 1. Lancement de l'application sur un émulateur rooté — affichage de l'alerte "Root detected!".
-> 2. Démarrage de `frida-server` sur l'appareil Android.
-> 3. Analyse du code décompilé avec JADX — identification des classes de détection root et de vérification du mot de passe.
-> 4. Injection du script Frida `bypass.js` — bypass de la détection root et blocage de `System.exit()`.
-> 5. Accès à l'application après le bypass — l'alerte ne s'affiche plus.
-> 6. Hook de la fonction de comparaison du mot de passe — extraction du secret en clair directement dans la console Frida.
-> 7. Saisie du mot de passe extrait dans l'application — message "Success!" confirmant la réussite.
 
-📂 La vidéo est incluse dans le livrable du lab sous le nom : **`demo_uncrackable1.mp4`**
+https://github.com/user-attachments/assets/1bfa723f-292a-452d-9176-c25265103d20
+
+
 
 ---
 
@@ -25,6 +18,9 @@ Ce guide explique comment bypasser la détection root de l'application **OWASP U
 Au lancement sur un appareil rooté, l'application affiche l'alerte suivante et se ferme immédiatement :
 
 > *Root detected! This is unacceptable. The app is now going to exit.*
+
+<img width="570" height="283" alt="image" src="https://github.com/user-attachments/assets/f90c4a57-f3d4-4993-a9dd-eea3973db46a" />
+
 
 L'objectif est double :
 - **Bypasser la détection root** pour accéder à l'application.
