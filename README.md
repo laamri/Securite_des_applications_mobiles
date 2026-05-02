@@ -95,7 +95,7 @@
 3. Revenir dans Burp → **HTTP history**.
 4. Vérifier qu'au moins une requête apparaît.
 
-<img width="1520" height="540" alt="image" src="https://github.com/user-attachments/assets/58b9c9a5-0e38-4b89-bd6b-4ad68bd6acec" />
+<img width="1492" height="504" alt="image" src="https://github.com/user-attachments/assets/6795ad1b-176b-44bf-8b0d-712c0549692d" />
 
 **À observer :** méthode (GET/POST), URL, statut, taille.
 
