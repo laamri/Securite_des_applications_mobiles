@@ -37,7 +37,8 @@
 3. Aller dans l'onglet **Proxy**.
 4. Vérifier que **Intercept is off** (on ne bloque pas le trafic tant que la config n'est pas validée).
 
-<!-- 📸 IMAGE: capture de l'onglet Proxy avec Intercept désactivé -->
+<img width="1556" height="859" alt="image" src="https://github.com/user-attachments/assets/6e79c17f-a476-45e0-9fbe-8694c4a81f1d" />
+
 
 **À observer :** l'onglet *HTTP history* est présent et le bouton d'interception est accessible.
 
@@ -51,7 +52,8 @@
 2. Vérifier qu'un listener est actif (**Enabled**).
 3. Noter le port (`<PORT_PROXY>`) et l'adresse d'écoute (*Loopback only* ou *All interfaces*).
 
-<!-- 📸 IMAGE: capture du Proxy Listener actif -->
+<img width="1532" height="845" alt="image" src="https://github.com/user-attachments/assets/d4ffeb3c-fb2c-434c-aae7-1b385b8aa032" />
+
 
 **Erreurs fréquentes :** listener désactivé, ou limité à *loopback* alors que l'émulateur n'est pas vu comme local.
 
@@ -62,7 +64,8 @@
 1. Sur la machine hôte, afficher l'adresse IP du réseau local.
 2. Noter l'IP sous la forme `<IP_HOTE>`.
 
-<!-- 📸 IMAGE: capture de la commande ipconfig / ifconfig -->
+<img width="533" height="1080" alt="image" src="https://github.com/user-attachments/assets/550b0d16-2c08-4ae9-8f91-52680117a405" />
+
 
 **Erreurs fréquentes :** utiliser une IP d'un autre réseau (VPN, interface inactive) ou confondre IP publique et IP locale.
 
@@ -92,7 +95,7 @@
 3. Revenir dans Burp → **HTTP history**.
 4. Vérifier qu'au moins une requête apparaît.
 
-<!-- 📸 IMAGE: capture de HTTP history montrant une première requête -->
+<img width="1520" height="540" alt="image" src="https://github.com/user-attachments/assets/58b9c9a5-0e38-4b89-bd6b-4ad68bd6acec" />
 
 **À observer :** méthode (GET/POST), URL, statut, taille.
 
@@ -106,7 +109,9 @@
 2. Observer l'onglet **Raw** : méthode, chemin, paramètres, en-têtes (User-Agent, Accept, Cookie…).
 3. Utiliser le panneau **Inspector** pour une lecture structurée : query parameters, cookies, headers.
 
-<!-- 📸 IMAGE: capture de l'onglet Raw + Inspector -->
+
+<img width="1207" height="737" alt="image" src="https://github.com/user-attachments/assets/d4f0fe90-0522-49e2-a13b-d8662ec05220" />
+
 
 **À retenir :** la compétence clé en sécurité mobile est l'analyse — comprendre ce qui est envoyé, quand, et pourquoi.
 
@@ -137,7 +142,7 @@
 2. Identifier les types proposés : *CA certificate*, *VPN & app user certificate*, *Wi-Fi certificate*.
 3. Comprendre : pour que le navigateur accepte le proxy en HTTPS, un certificat de labo est requis.
 
-<!-- 📸 IMAGE: capture de l'écran d'installation de certificat Android -->
+<img width="620" height="453" alt="image" src="https://github.com/user-attachments/assets/620bbaf1-e3ae-4df1-9004-146344a9856b" />
 
 **À observer :** la distinction entre certificat CA et certificats utilisateur/VPN/Wi-Fi, ainsi que les avertissements système.
 
