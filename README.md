@@ -35,7 +35,8 @@ frida --version
 python -c "import frida; print(frida.__version__)"
 ```
 
-<!-- 📸 IMAGE: sortie de frida --version -->
+<img width="1579" height="349" alt="image" src="https://github.com/user-attachments/assets/a212f40a-f89d-462d-a26f-3bc54c91f235" />
+
 
 ### 1.2 Vérifier ADB et l'appareil
 
@@ -46,7 +47,7 @@ adb devices
 
 L'appareil doit apparaître avec l'état `device`. Si `unauthorized`, rebranchez le câble et acceptez la demande sur le téléphone.
 
-<!-- 📸 IMAGE: sortie de adb devices -->
+<img width="883" height="225" alt="image" src="https://github.com/user-attachments/assets/96e958c8-db49-4644-a070-d1b78f87dcec" />
 
 ### 1.3 Démarrer frida-server sur l'appareil
 
@@ -63,6 +64,7 @@ adb push frida-server /data/local/tmp/
 adb shell chmod 755 /data/local/tmp/frida-server
 adb shell "/data/local/tmp/frida-server -l 0.0.0.0"
 ```
+<img width="1631" height="233" alt="image" src="https://github.com/user-attachments/assets/6e8150e3-1dff-419a-8c09-7c1061c54dfa" />
 
 Optionnel — redirection de ports :
 
@@ -77,9 +79,10 @@ Vérification :
 frida-ps -Uai
 ```
 
-Vous devez voir la liste des applications installées.
 
-<!-- 📸 IMAGE: sortie de frida-ps -Uai -->
+
+<img width="1428" height="481" alt="image" src="https://github.com/user-attachments/assets/159ad90d-2118-494c-aa44-e0e1d975bfb5" />
+
 
 ---
 
@@ -93,11 +96,15 @@ git clone <URL_du_depot_Medusa>
 cd Medusa
 pip install -r requirements.txt
 
+# for lunix
+sudo apt install medusa
+
 # Vérifier
 python medusa.py --help
 ```
 
-<!-- 📸 IMAGE: sortie de medusa --help -->
+<img width="1566" height="723" alt="image" src="https://github.com/user-attachments/assets/4e2b7f44-8684-4da8-a934-3d365f043884" />
+
 
 Vous devriez voir des sous-commandes comme `--package`, `--module`, `--root-bypass`, `--ssl-bypass`, etc. Si le CLI n'est pas reconnu, passez directement au **Plan B** (Frida pur) plus bas.
 
@@ -326,7 +333,10 @@ Exécuter les deux scripts combinés :
 frida -U -f com.example.rootcheck -l bypass_root.js -l bypass_native.js --no-pause
 ```
 
-<!-- 📸 IMAGE: console Frida avec hooks Java + natifs -->
+
+
+https://github.com/user-attachments/assets/c38b22fc-2788-4227-a58c-9b41cc56adce
+
 
 ---
 
