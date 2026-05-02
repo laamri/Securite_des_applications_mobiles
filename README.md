@@ -110,7 +110,7 @@
 3. Utiliser le panneau **Inspector** pour une lecture structurée : query parameters, cookies, headers.
 
 
-<img width="1207" height="737" alt="image" src="https://github.com/user-attachments/assets/d4f0fe90-0522-49e2-a13b-d8662ec05220" />
+<img width="1509" height="916" alt="image" src="https://github.com/user-attachments/assets/ec3135ee-b5b9-4676-8305-26b0132dc9c1" />
 
 
 **À retenir :** la compétence clé en sécurité mobile est l'analyse — comprendre ce qui est envoyé, quand, et pourquoi.
