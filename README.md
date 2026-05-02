@@ -2,12 +2,7 @@
 
 > Dynamic techniques with **Frida**, **Objection**, and native hooks.
 
-| | |
-|---|---|
-| **Course** | Mobile Application Security |
-| **Level** | Beginner → Intermediate |
-| **Platform** | Android (rooted device or emulator) |
-| **Language** | Scripts in JavaScript (Frida), Python tooling |
+
 
 ---
 
@@ -29,7 +24,6 @@ These techniques are provided **strictly for educational and authorized security
 8. [Medusa](#6--medusa)
 9. [When to Prefer Magisk](#7--when-to-prefer-magisk)
 10. [Troubleshooting](#8--troubleshooting)
-11. [Quick Checklist](#9--quick-checklist)
 
 ---
 
@@ -99,6 +93,10 @@ Decompress (Linux/macOS: `tar xf frida-server-*.xz` · Windows: use 7-Zip).
 adb push frida-server /data/local/tmp/
 adb shell chmod 755 /data/local/tmp/frida-server
 adb shell "/data/local/tmp/frida-server -l 0.0.0.0"
+
+
+<img width="1532" height="262" alt="image" src="https://github.com/user-attachments/assets/d9e4ba98-293f-4319-9ba6-2718e0a28ba0" />
+
 ```
 
 To run in background:
@@ -118,6 +116,9 @@ Validate from PC:
 
 ```bash
 frida-ps -Uai          # should list device processes/apps
+
+<img width="985" height="350" alt="image" src="https://github.com/user-attachments/assets/01b15086-0339-429d-9a97-54ca157167b0" />
+
 ```
 
 ---
@@ -273,6 +274,8 @@ Run:
 ```bash
 frida -U -f <package> -l bypass_root_basic.js --no-pause
 ```
+<img width="1402" height="488" alt="image" src="https://github.com/user-attachments/assets/df411cf3-7c15-4625-82d2-7bd2fff7b4ec" />
+
 
 ---
 
@@ -368,6 +371,9 @@ android root disable
 
 ---
 
+<img width="1353" height="395" alt="image" src="https://github.com/user-attachments/assets/8cd9a05e-88e7-47d8-a97e-f4d13d01b9c0" />
+
+---
 ## 6 — Medusa
 
 Medusa is a Frida-based framework with modular bypass scripts.
@@ -442,17 +448,6 @@ Java.perform(function () {
 
 ---
 
-## 9 — Quick Checklist
-
-- [ ] `python`, `pip` installed — `frida` version noted
-- [ ] `adb devices` shows device as `device`
-- [ ] `frida-server` running — `frida-ps -Uai` lists apps
-- [ ] `hello.js` injects without errors
-- [ ] `bypass_root_basic.js` neutralizes Java checks
-- [ ] `bypass_native.js` neutralizes native checks (if needed — discovered via `frida-trace`)
-- [ ] Objection: `android root disable` works on the target app
-- [ ] Medusa: `root-bypass` module injected and logs visible
-- [ ] Magisk: Zygisk / DenyList configured (if system-level masking is required)
 
 ---
 
