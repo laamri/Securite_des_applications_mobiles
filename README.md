@@ -9,6 +9,7 @@
 ## 📋 Overview
 
 This lab demonstrates how to **bypass root detection** on a rooted Android device using **Objection**, a runtime mobile exploration toolkit powered by Frida. The target app — OWASP UnCrackable Level 1 — checks for root at startup and refuses to run on rooted devices. We defeat that check entirely from the command line.
+<img width="418" height="196" alt="image" src="https://github.com/user-attachments/assets/e52d401d-1c7c-4c91-9f87-c35c2eb944d3" />
 
 ---
 
@@ -84,6 +85,7 @@ adb push frida-server /data/local/tmp/
 adb shell chmod 755 /data/local/tmp/frida-server
 adb shell "/data/local/tmp/frida-server -l 0.0.0.0"
 ```
+<img width="1607" height="216" alt="image" src="https://github.com/user-attachments/assets/e4362cbd-2b09-47a0-8eab-2a4df184394d" />
 
 Optional port forwarding (useful for network setups):
 
@@ -117,6 +119,7 @@ objection -g owasp.mstg.uncrackable1 explore
 # Inside the Objection console:
 android root disable
 ```
+<img width="1120" height="379" alt="image" src="https://github.com/user-attachments/assets/78162b54-3545-45b9-961c-a7fa86b06914" />
 
 ---
 
@@ -216,7 +219,3 @@ frida-trace -U -i open -i access -i stat -i openat owasp.mstg.uncrackable1
 - [OWASP MASTG — Testing Root Detection](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0011/)
 
 ---
-
-## 📄 License
-
-Educational use only — part of a mobile security course lab series.
