@@ -1,11 +1,8 @@
 # PwnSec CTF 2024 — Snake (Android Reverse Engineering)
 
 ## Overview
+<img width="649" height="1007" alt="image" src="https://github.com/user-attachments/assets/a4d9db8c-3351-4b7e-a8df-d4c7f3e5e5ec" />
 
-**Category:** Mobile / Android Reverse Engineering  
-**Difficulty:** Medium  
-**Key Concepts:** APK decompilation, SnakeYAML deserialization (CVE-2022-1471), Intent extras, native library analysis  
-**Flag:** `PWNSEC{W3'r3_N0t_T00l5_0f_The_g0v3rnm3n7_0R_4ny0n3_3ls3}`
 
 > **Important:** The application must be run on an Android emulator with **API 28 or lower** (Android 9 Pie or earlier) to avoid root/Frida detection issues.
 
@@ -25,12 +22,10 @@ At first glance, the app's interface doesn't reveal anything useful. However, up
 
 ## Step 2 — Examining the Manifest
 
-After decompiling with `apktool d snake.apk`, we inspect `AndroidManifest.xml` and find two storage-related permissions:
+After openning he apk in jadx , we inspect `AndroidManifest.xml` and find two storage-related permissions:
 
-```xml
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-```
+<img width="1099" height="169" alt="image" src="https://github.com/user-attachments/assets/de06fd03-108e-486f-a5d5-bd3dadf4e22d" />
+
 
 This strongly suggests the app reads a file from external storage as part of its hidden logic.
 
@@ -49,28 +44,8 @@ We open the APK in **JADX** to inspect the Java source code. The project contain
 
 `MainActivity` contains several security checks (root detection, Frida detection), but the most interesting part is the `C()` method:
 
-```java
-public final void C() {
-    Intent intent = getIntent();
-    String stringExtra = intent.getStringExtra("SNAKE");
+<img width="1344" height="605" alt="image" src="https://github.com/user-attachments/assets/f9ac6d67-8e62-48ca-acb9-b7626a11a140" />
 
-    if (intent.hasExtra("SNAKE") && stringExtra.equals("BigBoss")) {
-        File file = new File(
-            new File(Environment.getExternalStorageDirectory(), "snake"),
-            "Skull_Face.yml"
-        );
-
-        if (!file.exists()) {
-            Log.e("YML File", "File not found: " + file.getAbsolutePath());
-            return;
-        }
-
-        // Parses the YAML file using SnakeYAML
-        e eVar = new e(0);
-        Object f2 = eVar.f(fileInputStream);
-        eVar.c(f2);
-    }
-}
 ```
 
 This method does the following:
@@ -102,30 +77,7 @@ adb logcat | grep "YML File"
 
 The second key class is `BigBoss`:
 
-```java
-public class BigBoss {
-    static {
-        System.loadLibrary("snake");
-    }
-
-    public BigBoss(String str) {
-        String stringFromJNI = stringFromJNI(str);
-        if (str.equals("Snaaaaaaaaaaaaaake")) {
-            Log.d("BigBoss: ", hexToAscii(stringFromJNI));
-        }
-    }
-
-    private String hexToAscii(String str) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < str.length(); i += 2) {
-            sb.append((char) Integer.parseInt(str.substring(i, i + 2), 16));
-        }
-        return sb.toString();
-    }
-
-    public native String stringFromJNI(String str);
-}
-```
+<img width="1425" height="789" alt="image" src="https://github.com/user-attachments/assets/51937f89-527f-4a34-839f-2119d61f02fd" />
 
 The constructor takes a string argument, passes it to a **native function** (`stringFromJNI` inside `libsnake.so`), and if the input equals `Snaaaaaaaaaaaaaake`, it decodes the returned hex string to ASCII and logs the result.
 
