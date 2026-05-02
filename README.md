@@ -93,11 +93,9 @@ Decompress (Linux/macOS: `tar xf frida-server-*.xz` · Windows: use 7-Zip).
 adb push frida-server /data/local/tmp/
 adb shell chmod 755 /data/local/tmp/frida-server
 adb shell "/data/local/tmp/frida-server -l 0.0.0.0"
----
-
-<img width="1532" height="262" alt="image" src="https://github.com/user-attachments/assets/d9e4ba98-293f-4319-9ba6-2718e0a28ba0" />
 
 ```
+<img width="1532" height="262" alt="image" src="https://github.com/user-attachments/assets/d9e4ba98-293f-4319-9ba6-2718e0a28ba0" />
 
 To run in background:
 
@@ -119,9 +117,9 @@ frida-ps -Uai          # should list device processes/apps
 
 ---
 
-<img width="985" height="350" alt="image" src="https://github.com/user-attachments/assets/01b15086-0339-429d-9a97-54ca157167b0" />
 
 ```
+<img width="985" height="350" alt="image" src="https://github.com/user-attachments/assets/01b15086-0339-429d-9a97-54ca157167b0" />
 
 ---
 
