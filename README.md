@@ -156,7 +156,7 @@ dz> run app.package.manifest jakhar.aseem.diva
 ```
 <img width="1879" height="598" alt="image" src="https://github.com/user-attachments/assets/962fa5f1-fee6-462e-a1d0-c2cd545b4492" />
 
-
+```bash
 # Intent-filters pour les activités
 dz> run app.activity.info -a jakhar.aseem.diva -i
 
@@ -169,7 +169,6 @@ dz> run app.provider.finduri jakhar.aseem.diva
 
 
 ```
-<img width="1513" height="310" alt="image" src="https://github.com/user-attachments/assets/563528ab-a29d-468c-8594-fad87504e47b" />
 
 URI exposée confirmée :
 
@@ -177,7 +176,7 @@ URI exposée confirmée :
 content://jakhar.aseem.diva.provider.notesprovider/notes
 ```
 
-> 📸 *Capture : Analyse des protections + scan des URI disponibles*
+<img width="1513" height="310" alt="image" src="https://github.com/user-attachments/assets/563528ab-a29d-468c-8594-fad87504e47b" />
 
 **Vérifications :**
 - [ ] Les permissions définies dans le manifeste ont été analysées
