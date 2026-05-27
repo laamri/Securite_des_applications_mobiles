@@ -91,7 +91,6 @@ Ce lab présente un audit de sécurité mobile réalisé sur l'application Andro
 # Connexion à la console Drozer
 drozer console connect
 
-<img width="1382" height="614" alt="image" src="https://github.com/user-attachments/assets/f4590e5d-8263-4640-9d3b-d69a7c7c4864" />
 
 # Vérifier la connexion et les infos de l'appareil
 dz> device
@@ -101,7 +100,7 @@ dz> run information.device
 dz> list
 ```
 
-> 📸 *Capture : Console Drozer connectée avec résultat de la commande `device`*
+<img width="1382" height="614" alt="image" src="https://github.com/user-attachments/assets/f4590e5d-8263-4640-9d3b-d69a7c7c4864" />
 
 **Vérifications :**
 - [ ] La console Drozer est connectée à l'émulateur
@@ -127,11 +126,8 @@ dz> run app.activity.info -a jakhar.aseem.diva
 dz> run app.service.info -a jakhar.aseem.diva
 dz> run app.broadcast.info -a jakhar.aseem.diva
 dz> run app.provider.info -a jakhar.aseem.diva
-
-<img width="1734" height="495" alt="image" src="https://github.com/user-attachments/assets/071d4dd9-c74d-4e0c-abb3-d96abc90882e" />
-
-
 ```
+<img width="1734" height="495" alt="image" src="https://github.com/user-attachments/assets/071d4dd9-c74d-4e0c-abb3-d96abc90882e" />
 
 ### Tableau récapitulatif des composants exposés
 
@@ -143,7 +139,6 @@ dz> run app.provider.info -a jakhar.aseem.diva
 | Receiver | BootReceiver | Oui | Aucune |
 | Provider | NotesProvider | Oui | Lecture/Écriture |
 
-> 📸 *Capture : Résultats des commandes de cartographie Drozer*
 
 **Vérifications :**
 - [ ] Tous les composants de l'application ont été identifiés
@@ -158,6 +153,7 @@ dz> run app.provider.info -a jakhar.aseem.diva
 # Analyser le manifeste complet
 dz> run app.package.manifest jakhar.aseem.diva
 
+```
 <img width="1879" height="598" alt="image" src="https://github.com/user-attachments/assets/962fa5f1-fee6-462e-a1d0-c2cd545b4492" />
 
 
@@ -171,9 +167,9 @@ dz> run app.provider.info -a jakhar.aseem.diva -p
 dz> run scanner.provider.finduris -a jakhar.aseem.diva
 dz> run app.provider.finduri jakhar.aseem.diva
 
-<img width="1513" height="310" alt="image" src="https://github.com/user-attachments/assets/563528ab-a29d-468c-8594-fad87504e47b" />
 
 ```
+<img width="1513" height="310" alt="image" src="https://github.com/user-attachments/assets/563528ab-a29d-468c-8594-fad87504e47b" />
 
 URI exposée confirmée :
 
