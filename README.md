@@ -10,6 +10,8 @@
 
 Ce lab présente un audit de sécurité mobile réalisé sur l'application Android vulnérable **DIVA** à l'aide du framework **Drozer**. L'objectif est d'identifier les faiblesses liées aux composants Android exportés et aux mauvaises configurations de sécurité pouvant permettre des accès non autorisés aux données internes de l'application.
 
+<img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/6e5e3f68-4114-419e-a564-0003e77fd1aa" />
+
 ---
 
 ## 🎯 Objectifs pédagogiques
@@ -52,12 +54,17 @@ Ce lab présente un audit de sécurité mobile réalisé sur l'application Andro
 2. Installer l'agent Drozer sur l'émulateur :
    ```bash
    adb install drozer-agent.apk
+
+<img width="1434" height="214" alt="image" src="https://github.com/user-attachments/assets/ebfb493c-cebe-45eb-998b-74cf0c09b79d" />
+
    ```
 
 3. Installer l'application vulnérable DIVA :
    ```bash
    adb install diva-beta.apk
    ```
+   <img width="1299" height="711" alt="image" src="https://github.com/user-attachments/assets/8206bf51-41cd-4ce4-b978-b1c665381555" />
+
 
 4. Ouvrir l'app **Drozer Agent** sur l'émulateur et activer **Embedded Server**
 
@@ -73,6 +80,8 @@ Ce lab présente un audit de sécurité mobile réalisé sur l'application Andro
 - [ ] L'agent Drozer est installé et son serveur est activé
 - [ ] DIVA est installée sur l'émulateur
 - [ ] Le port forwarding `tcp:31415` est configuré
+      
+<img width="312" height="614" alt="image" src="https://github.com/user-attachments/assets/2769f1ff-51fa-4b5d-a3b3-22bae7970bd9" />
 
 ---
 
@@ -81,6 +90,8 @@ Ce lab présente un audit de sécurité mobile réalisé sur l'application Andro
 ```bash
 # Connexion à la console Drozer
 drozer console connect
+
+<img width="1382" height="614" alt="image" src="https://github.com/user-attachments/assets/f4590e5d-8263-4640-9d3b-d69a7c7c4864" />
 
 # Vérifier la connexion et les infos de l'appareil
 dz> device
@@ -116,6 +127,10 @@ dz> run app.activity.info -a jakhar.aseem.diva
 dz> run app.service.info -a jakhar.aseem.diva
 dz> run app.broadcast.info -a jakhar.aseem.diva
 dz> run app.provider.info -a jakhar.aseem.diva
+
+<img width="1734" height="495" alt="image" src="https://github.com/user-attachments/assets/071d4dd9-c74d-4e0c-abb3-d96abc90882e" />
+
+
 ```
 
 ### Tableau récapitulatif des composants exposés
@@ -143,6 +158,9 @@ dz> run app.provider.info -a jakhar.aseem.diva
 # Analyser le manifeste complet
 dz> run app.package.manifest jakhar.aseem.diva
 
+<img width="1879" height="598" alt="image" src="https://github.com/user-attachments/assets/962fa5f1-fee6-462e-a1d0-c2cd545b4492" />
+
+
 # Intent-filters pour les activités
 dz> run app.activity.info -a jakhar.aseem.diva -i
 
@@ -152,6 +170,9 @@ dz> run app.provider.info -a jakhar.aseem.diva -p
 # Scanner les URI accessibles
 dz> run scanner.provider.finduris -a jakhar.aseem.diva
 dz> run app.provider.finduri jakhar.aseem.diva
+
+<img width="1513" height="310" alt="image" src="https://github.com/user-attachments/assets/563528ab-a29d-468c-8594-fad87504e47b" />
+
 ```
 
 URI exposée confirmée :
