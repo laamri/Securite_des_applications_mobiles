@@ -264,8 +264,11 @@ To confirm the proxy was working correctly, YouTube was accessed from the **Chro
 ```
 Browser in emulator → https://youtube.com
 ```
+<img width="1570" height="485" alt="Screenshot 2026-05-29 102529" src="https://github.com/user-attachments/assets/daa5dfd8-80a4-48dd-a2bc-380f87b8fe46" />
+
  
 ✅ Requests appeared immediately in **Burp → Proxy → HTTP History** — confirming the full proxy chain was functional.
+
  
 ### DIVA Network challenges
  
