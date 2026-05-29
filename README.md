@@ -1,3 +1,20 @@
+# Overview
+
+This laboratory report presents a mobile application security assessment performed on the vulnerable Android application:
+
+**DIVA (Damn Insecure Vulnerable App)**
+
+The analysis focuses on:
+
+- Static analysis (SAST)
+- OSINT exposure
+- APK inspection
+- Permissions review
+- Manifest analysis
+- Vulnerability triage
+
+Approach: combined OSINT and static analysis to triage and prioritize findings with clear remediation guidance.
+
 # 📱 LAB 8 — Analyse de Sécurité Mobile avec BeVigil & Yaazhini
 
 <div align="center">
