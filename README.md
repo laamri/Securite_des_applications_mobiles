@@ -127,10 +127,10 @@ Fichier `info.txt` initialisé avec la cible, la date, et le périmètre d'inter
 **Configuration du proxy Yaazhini :**
 
 ```
-IP   : 169.254.247.11
+IP   : 192.168.56.2
 Port : 8088
 ```
-<img width="1122" height="757" alt="image" src="https://github.com/user-attachments/assets/8dca3db9-da4f-4877-8245-92260cb5be24" />
+<img width="1443" height="868" alt="image" src="https://github.com/user-attachments/assets/b5c893b9-e33b-4982-a049-b4778be931fa" />
 
 
 **Workflow :**
@@ -154,9 +154,11 @@ Port : 8088
 | 6 | JavaScript activé dans WebView | 🟡 Moyenne |
 
 ---
+
+<img width="1514" height="654" alt="image" src="https://github.com/user-attachments/assets/f2ea77dd-01a9-47f3-8c74-0938e9f48919" />
+
 <img width="1519" height="761" alt="image" src="https://github.com/user-attachments/assets/7a69156a-fa11-47c6-9e95-7517c3b41798" />
 
-<img width="1600" height="840" alt="image" src="https://github.com/user-attachments/assets/f9f898af-c25a-46e1-9026-ab3513cb40b7" />
 
 <img width="1401" height="617" alt="image" src="https://github.com/user-attachments/assets/82bce729-54f2-43c9-b776-42c6b458fbe7" />
 
