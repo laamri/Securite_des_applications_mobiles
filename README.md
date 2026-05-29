@@ -154,8 +154,13 @@ Port : 8088
 | 6 | JavaScript activé dans WebView | 🟡 Moyenne |
 
 ---
+<img width="1519" height="761" alt="image" src="https://github.com/user-attachments/assets/7a69156a-fa11-47c6-9e95-7517c3b41798" />
+
 <img width="1600" height="840" alt="image" src="https://github.com/user-attachments/assets/f9f898af-c25a-46e1-9026-ab3513cb40b7" />
 
+<img width="1401" height="617" alt="image" src="https://github.com/user-attachments/assets/82bce729-54f2-43c9-b776-42c6b458fbe7" />
+
+<img width="1410" height="763" alt="image" src="https://github.com/user-attachments/assets/75c540a8-4766-45d9-914d-e39c18892dc6" />
 
 ## 🔬 Triage & Corrélation (OWASP Mobile Top 10)
 
@@ -177,6 +182,9 @@ Port : 8088
 <img width="2554" height="1106" alt="image" src="https://github.com/user-attachments/assets/e0787945-1c23-4361-876a-b0786f91a3a6" />
 
 <img width="2253" height="1011" alt="image" src="https://github.com/user-attachments/assets/9e7a483e-282c-4aa3-84c2-2c6de8c8e8fc" />
+<img width="2485" height="981" alt="image" src="https://github.com/user-attachments/assets/97a1a757-bc12-44ae-80c5-15ec0e4b50dd" />
+<img width="2517" height="1248" alt="image" src="https://github.com/user-attachments/assets/421c408e-8af6-43d9-b623-453d98960c6e" />
+
 
 ## 🛡️ Recommandations
 
