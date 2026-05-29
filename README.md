@@ -51,6 +51,7 @@ lab8-mobile-audit/
 ├── 03-triage/         # Consolidation & corrélation
 └── 04-report/         # Rapport final
 ```
+<img width="1142" height="472" alt="image" src="https://github.com/user-attachments/assets/d2ec1b84-3154-488d-8201-7056906bdca6" />
 
 ---
 
@@ -77,6 +78,7 @@ mkdir 04-report
 ```powershell
 Get-FileHash -Path "00-scope\diva.apk" -Algorithm SHA256
 ```
+<img width="1645" height="121" alt="image" src="https://github.com/user-attachments/assets/f9e400d8-3e4e-4b70-8f1d-0d5020a77bb9" />
 
 Le hash obtenu est documenté et sert de référence pour toute la durée de l'audit.
 
@@ -93,13 +95,19 @@ Fichier `info.txt` initialisé avec la cible, la date, et le périmètre d'inter
 ### Task 3 — Analyse BeVigil (OSINT externe)
 
 > **Objectif** : Analyser l'exposition externe de `diva.apk` via la plateforme BeVigil.
+<img width="2543" height="1143" alt="image" src="https://github.com/user-attachments/assets/45cc7591-a45a-4152-9ee6-bead0b660521" />
 
 **Étapes :**
 
 1. Upload du fichier `diva.apk` via *"Scan .apk file"*
-2. Analyse du certificat APK via BeVigil Certificate Viewer
+<img width="2553" height="1176" alt="image" src="https://github.com/user-attachments/assets/d63671f1-aa57-40c5-8cc0-54ef2a7b11c6" />
+
+<img width="1935" height="418" alt="image" src="https://github.com/user-attachments/assets/43f4ca97-2d7c-492e-8c44-2352faa1054c" />
+
+
+3. Analyse du certificat APK via BeVigil Certificate Viewer
    - ⚠️ Application signée avec un **certificat de débogage**
-3. Consultation du rapport de risque généré
+4. Consultation du rapport de risque généré
 
 **Résultats BeVigil :**
 
@@ -119,9 +127,11 @@ Fichier `info.txt` initialisé avec la cible, la date, et le périmètre d'inter
 **Configuration du proxy Yaazhini :**
 
 ```
-IP   : 172.29.32.1
+IP   : 169.254.247.11
 Port : 8088
 ```
+<img width="1415" height="824" alt="image" src="https://github.com/user-attachments/assets/91dc49ba-ed24-4704-a232-a00afdc389fd" />
+
 
 **Workflow :**
 
@@ -144,6 +154,8 @@ Port : 8088
 | 6 | JavaScript activé dans WebView | 🟡 Moyenne |
 
 ---
+<img width="901" height="471" alt="image" src="https://github.com/user-attachments/assets/f740a233-6196-43d6-abf3-596c9b86886d" />
+
 
 ## 🔬 Triage & Corrélation (OWASP Mobile Top 10)
 
@@ -160,6 +172,11 @@ Port : 8088
 | 🟡 Moyenne | JavaScript activé dans WebView | Yaazhini | M6 |
 
 ---
+<img width="2525" height="1024" alt="image" src="https://github.com/user-attachments/assets/50e6df68-ba09-44b1-a978-391adef2d755" />
+
+<img width="2554" height="1106" alt="image" src="https://github.com/user-attachments/assets/e0787945-1c23-4361-876a-b0786f91a3a6" />
+
+<img width="2253" height="1011" alt="image" src="https://github.com/user-attachments/assets/9e7a483e-282c-4aa3-84c2-2c6de8c8e8fc" />
 
 ## 🛡️ Recommandations
 
