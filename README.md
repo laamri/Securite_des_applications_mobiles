@@ -130,7 +130,7 @@ Fichier `info.txt` initialisé avec la cible, la date, et le périmètre d'inter
 IP   : 169.254.247.11
 Port : 8088
 ```
-<img width="1415" height="824" alt="image" src="https://github.com/user-attachments/assets/91dc49ba-ed24-4704-a232-a00afdc389fd" />
+<img width="1122" height="757" alt="image" src="https://github.com/user-attachments/assets/8dca3db9-da4f-4877-8245-92260cb5be24" />
 
 
 **Workflow :**
@@ -154,7 +154,7 @@ Port : 8088
 | 6 | JavaScript activé dans WebView | 🟡 Moyenne |
 
 ---
-<img width="901" height="471" alt="image" src="https://github.com/user-attachments/assets/f740a233-6196-43d6-abf3-596c9b86886d" />
+<img width="1600" height="840" alt="image" src="https://github.com/user-attachments/assets/f9f898af-c25a-46e1-9026-ab3513cb40b7" />
 
 
 ## 🔬 Triage & Corrélation (OWASP Mobile Top 10)
