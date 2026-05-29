@@ -61,20 +61,24 @@ adb version
 frida --version
 objection --version
 ```
+<img width="1547" height="365" alt="image" src="https://github.com/user-attachments/assets/69958854-e509-4e5b-8c4f-2803ae264876" />
+
 
 ### 2. Install Frida & Objection
 
 ```bash
 pip install --upgrade frida frida-tools objection
 ```
+<img width="1358" height="417" alt="image" src="https://github.com/user-attachments/assets/56bc4d4f-42ce-4177-8771-a0e8ad749e15" />
+
 
 ### 3. Identify Emulator Architecture
 
 ```powershell
 $ADB = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
 & $ADB shell getprop ro.product.cpu.abi
-# Expected: x86_64
 ```
+<img width="1164" height="99" alt="image" src="https://github.com/user-attachments/assets/c4c550a6-b797-4c77-a4ba-46533c5c4ef2" />
 
 ---
 
@@ -92,6 +96,7 @@ $ADB = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
 # Launch (in a dedicated terminal)
 & $ADB shell "/data/local/tmp/frida-server -l 0.0.0.0:27042"
 ```
+<img width="1498" height="476" alt="image" src="https://github.com/user-attachments/assets/96cbbb82-fb41-4475-8157-cc98f7512ae1" />
 
 > Download the correct binary from [github.com/frida/frida/releases](https://github.com/frida/frida/releases).  
 > Match the version to your local `frida --version` output and the emulator architecture (`x86_64`).
@@ -101,15 +106,8 @@ $ADB = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
 ```bash
 frida-ps -Uai
 ```
+<img width="1553" height="527" alt="image" src="https://github.com/user-attachments/assets/fb57178f-b338-411a-be26-4567c4632717" />
 
-Expected output:
-
-```
-PID   Name     Identifier
-----  -------  -----------------------
-8455  Chrome   com.android.chrome
-...
-```
 
 ---
 
@@ -121,6 +119,8 @@ PID   Name     Identifier
 - Set listener to `127.0.0.1:8080`
 - Bind to **All interfaces** for emulator access
 
+<img width="1598" height="907" alt="Screenshot 2026-05-29 094048" src="https://github.com/user-attachments/assets/44419039-e1d3-46a7-a85b-0353287fda5f" />
+
 ### Configure Android Proxy
 
 ```powershell
@@ -131,6 +131,12 @@ PID   Name     Identifier
 & $ADB shell settings get global http_proxy
 # Expected: 10.0.2.2:8080
 ```
+<img width="639" height="1288" alt="Screenshot 2026-05-29 130040" src="https://github.com/user-attachments/assets/ad6e746e-97cb-43a0-8a28-c23641c4631a" />
+
+
+# burp site
+<img width="599" height="463" alt="Screenshot 2026-05-29 095630" src="https://github.com/user-attachments/assets/d032408c-70d4-43c1-82cf-a9c887fc4854" />
+
 
 ### Install Burp CA Certificate
 
@@ -146,18 +152,21 @@ PID   Name     Identifier
 4. Select `burpcert.der` and confirm installation (name it `BurpCA`)
 
 ---
+<img width="566" height="695" alt="Screenshot 2026-05-29 101856" src="https://github.com/user-attachments/assets/eacf1f03-ebdc-48a1-83ed-7f3683843f45" />
 
 ## 📱 Install Target Application
 
 ```powershell
-& $ADB install -r .\android-ssl-pinning-demo.apk
+& $ADB install -r .\pinning-demo.apk
 ```
+<img width="570" height="855" alt="image" src="https://github.com/user-attachments/assets/d562b66c-bad6-409e-b286-a4bd4416324d" />
 
 Confirm the app is visible to Frida:
 
 ```powershell
 frida-ps -Uai | Select-String -Pattern "pinning"
 ```
+<img width="904" height="297" alt="image" src="https://github.com/user-attachments/assets/006cb87f-0566-4144-af18-8ccbddd342d8" />
 
 ---
 
@@ -179,14 +188,7 @@ android sslpinning disable
 
 Expected output:
 
-```
-(agent) Custom TrustManager ready, overriding SSLContext.init()
-(agent) Found okhttp3.CertificatePinner, overriding CertificatePinner.check()
-(agent) Found okhttp3.CertificatePinner, overriding CertificatePinner.check$okhttp()
-(agent) Found com.android.org.conscrypt.TrustManagerImpl, overriding TrustManagerImpl.verifyChain()
-(agent) Found com.android.org.conscrypt.TrustManagerImpl, overriding TrustManagerImpl.checkTrustedRecursive()
-(agent) Registering job ... Name: android-sslpinning-disable
-```
+<img width="1590" height="662" alt="image" src="https://github.com/user-attachments/assets/f54ec64a-2e41-452d-85a9-301dfa8a74d0" />
 
 Objection has hooked the core TLS verification mechanisms. Burp's certificate will now be trusted by the app at runtime.
 
@@ -205,16 +207,15 @@ After running the bypass command, the following buttons should turn **green**:
 | OKHTTP PINNED REQUEST | ❌ | ✅ |
 | VOLLEY PINNED REQUEST | ❌ | ✅ |
 | TRUSTKIT PINNED REQUEST | ❌ | ✅ |
+<img width="501" height="386" alt="image" src="https://github.com/user-attachments/assets/d74e1085-eee4-4123-aff0-f62fb03df92d" />
+
 
 ### In Burp Suite
 
 Navigate to **Proxy → HTTP History**. You should now see HTTPS requests from the app:
 
-```
-https://sha256.badssl.com        → 200 OK
-https://ecc384.badssl.com        → 200 OK
-https://amiusing.httptoolkit...  → 200 OK
-```
+<img width="1132" height="371" alt="image" src="https://github.com/user-attachments/assets/f73b3e6c-b46a-4419-9772-29e42d7fdc88" />
+
 
 ---
 
