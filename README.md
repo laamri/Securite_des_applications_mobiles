@@ -47,10 +47,12 @@ Android Emulator  →  10.0.2.2:8081  →  Windows portproxy  →  172.21.x.x:80
 ip addr show eth0 | grep "inet "
 # Example output: inet 172.21.0.119/20
 ```
+<img width="1410" height="259" alt="image" src="https://github.com/user-attachments/assets/f706010a-87bf-40f9-b019-e736822649dd" />
 
 ### 1.2 Configure Burp Listener
 
 In Burp → **Proxy → Proxy Settings → Proxy Listeners → Add/Edit**:
+<img width="1598" height="907" alt="Screenshot 2026-05-29 094048" src="https://github.com/user-attachments/assets/5e7eb5db-e9a4-4dac-b7ac-e6a761444d3a" />
 
 | Setting | Value |
 |---|---|
@@ -81,7 +83,8 @@ netsh interface portproxy add v4tov4 `
 
 # Allow through Windows Firewall
 New-NetFirewallRule -DisplayName "WSL Burp 8081" -Direction Inbound `
-  -LocalPort 8081 -Protocol TCP -Action Allow
+  -Local<img width="641" height="1299" alt="Screenshot 2026-05-29 092817" src="https://github.com/user-attachments/assets/24b5c8d8-f63b-4540-be7c-13fcf07f6096" />
+Port 8081 -Protocol TCP -Action Allow
 
 # Verify
 netsh interface portproxy show all
@@ -99,11 +102,15 @@ Settings → Wi-Fi → Long press network → Modify Network → Advanced
   Hostname: 10.0.2.2       ← special address: emulator's loopback to Windows host
   Port: 8081
 ```
+<img width="641" height="1299" alt="Screenshot 2026-05-29 092817" src="https://github.com/user-attachments/assets/6aa5942e-cafc-4bcd-a3bc-43eca78dafe0" />
 
 **Validate:** Open the browser in the emulator and go to `http://10.0.2.2:8081`  
 ✅ You should see the Burp Suite landing page.
 
 ---
+<img width="599" height="463" alt="Screenshot 2026-05-29 095630" src="https://github.com/user-attachments/assets/6a457a82-43d2-435f-8c38-d46b1378171c" />
+
+
 
 ## 🔧 Step 4 — Install Burp CA Certificate
 
@@ -124,11 +131,16 @@ adb push \\wsl$\kali-linux\home\<user>\9a5ba575.0 /sdcard/Downloads/
 adb shell mv /sdcard/Downloads/9a5ba575.0 /sdcard/Downloads/burp.crt
 ```
 
+<img width="553" height="901" alt="Screenshot 2026-05-29 101542" src="https://github.com/user-attachments/assets/f24dda51-cbda-4ade-905d-bc1d65c0a6fb" />
+
+
 ### 4.3 Install on emulator
 ```
 Settings → Security → Encryption & credentials
 → Install a certificate → CA Certificate → burp.crt
 ```
+
+<img width="563" height="1024" alt="Screenshot 2026-05-29 101128" src="https://github.com/user-attachments/assets/d3cb9413-3217-4114-b2c6-09f4fcd59939" />
 
 ### ❌ Known Issue — Cannot install as System CA
 
@@ -157,11 +169,17 @@ mount -o remount,rw / → '/dev/block/dm-0' is read-only
 frida-ps -Uai
 ```
 
+<img width="1338" height="571" alt="Screenshot 2026-05-29 091641" src="https://github.com/user-attachments/assets/2d5f7fcb-4378-4d59-a653-8e6959104759" />
+
+
+
 ### 5.2 Inject the bypass script
 
 ```powershell
 frida -U -f tech.httptoolkit.pinning_demo -l sslpin_bypass_universal.js
 ```
+
+<img width="1510" height="669" alt="image" src="https://github.com/user-attachments/assets/7a858b1c-234f-425c-902c-4fa94174222f" />
 
 > **Note:** `--no-pause` flag was removed in Frida 17.x — just omit it.
 
@@ -188,6 +206,10 @@ frida -U -f tech.httptoolkit.pinning_demo -l sslpin_bypass_universal.js
 
 ---
 
+<img width="513" height="578" alt="image" src="https://github.com/user-attachments/assets/8b98ed2a-3e11-4502-887f-20561b0dd06b" />
+
+
+
 ## 📊 Step 6 — Results (SSL Pinning Demo)
 
 | Button | Result | Notes |
@@ -208,7 +230,70 @@ Connection: keep-alive
 Accept-Encoding: gzip, deflate, br
 ```
 
+<img width="1590" height="720" alt="image" src="https://github.com/user-attachments/assets/116d20cb-6d0d-4c25-88ee-bf8e75f5b0c4" />
+
+
 ---
+
+## 🧪 Step 7 — Testing with DIVA (Damn Insecure and Vulnerable App)
+ 
+DIVA was the first app tested to validate the proxy setup. It is a deliberately vulnerable Android app designed for security practice.
+ 
+```powershell
+# Launch DIVA under Frida
+frida -U -f jakhar.aseem.diva -l sslpin_bypass_universal.js
+```
+
+ <img width="1398" height="378" alt="image" src="https://github.com/user-attachments/assets/14a50ddb-36b1-40c1-9ca8-53f96c0ff1b8" />
+
+**Expected Frida output:**
+```
+[+] SSL bypass: SSLContext.init patched
+```
+ 
+### What we observed
+ 
+**DIVA has very little real network traffic.** Most of its challenges (input validation, hardcoded credentials, insecure storage) are local — they do not make HTTP/HTTPS requests. Because of this, no requests appeared in Burp HTTP History when using DIVA normally.
+ 
+> **Lesson learned:** Burp HTTP History staying empty does not mean the proxy is broken — the target app simply may not be making network calls. Always validate the proxy independently first (e.g. browse to a website from the emulator browser).
+ 
+### Proxy validation via emulator browser
+ 
+To confirm the proxy was working correctly, YouTube was accessed from the **Chrome browser inside the emulator**:
+ 
+```
+Browser in emulator → https://youtube.com
+```
+ 
+✅ Requests appeared immediately in **Burp → Proxy → HTTP History** — confirming the full proxy chain was functional.
+ 
+### DIVA Network challenges
+ 
+DIVA does include network-related challenges under **"Network Data"** (Parts 1, 2, 3) which make real HTTP requests. These would be visible in Burp when triggered:
+ 
+```
+DIVA app → Network Data → Part 1 / Part 2 / Part 3
+```
+ 
+| Challenge | Traffic type | Visible in Burp |
+|---|---|---|
+| Network Data Part 1 | HTTP cleartext | ✅ Yes |
+| Network Data Part 2 | HTTP cleartext | ✅ Yes |
+| Network Data Part 3 | HTTPS (requires cert) | ✅ With CA installed |
+ 
+### Key issue — App freezing on white screen
+ 
+When first launching DIVA under Frida with **Burp Intercept ON**, the app appeared to freeze on a white screen. This was not a crash — Burp was blocking every network request waiting for manual forwarding.
+ 
+**Fix:** Set Intercept to **OFF** and monitor traffic passively via HTTP History instead.
+ 
+```
+Burp → Proxy → Intercept → click to set "Intercept is OFF"
+```
+
+
+ ---
+
 
 ## 🐛 Errors & Fixes Summary
 
