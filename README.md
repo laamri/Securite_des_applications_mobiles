@@ -32,11 +32,7 @@ adb devices
 
 L'émulateur a été détecté comme suit :
 
-```
-emulator-5554    device
-```
-
----
+<img width="1561" height="329" alt="image" src="https://github.com/user-attachments/assets/58ef1784-d8ad-4cef-bfe3-9a17892a5e63" />
 
 ## 2. Premier Lancement
 
@@ -50,6 +46,7 @@ This is unacceptable. The app is now going to exit.
 Cela indique que l'application embarque des protections **anti-root**, **anti-debug** et **anti-tampering**.
 
 ---
+<img width="514" height="641" alt="image" src="https://github.com/user-attachments/assets/8a6d5518-13a7-4e99-848d-d27d83949af1" />
 
 ## 3. Analyse Statique avec JADX
 
@@ -76,6 +73,7 @@ Dans `MainActivity`, la méthode `verifyLibs()` vérifie les **valeurs CRC** des
 L'application compare les valeurs CRC réelles avec celles stockées dans les ressources. Si une valeur diffère, l'application se considère modifiée.
 
 ---
+<img width="1957" height="959" alt="image" src="https://github.com/user-attachments/assets/7e9947ae-6e67-45fe-be31-1936b5fa0eb9" />
 
 ## 5. Détection Root, Debug et Tampering
 
@@ -94,6 +92,7 @@ Si l'une de ces vérifications retourne `true`, l'application affiche la boîte 
 ```java
 showDialog("Rooting or tampering detected.");
 ```
+<img width="1972" height="955" alt="image" src="https://github.com/user-attachments/assets/7bd9be93-e810-4698-9ce9-22925f576530" />
 
 ---
 
@@ -111,6 +110,7 @@ Si le secret est correct, l'application affiche :
 Success!
 This is the correct secret.
 ```
+<img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/593a8b64-2d8f-46d5-8190-ef4c0c4f339e" />
 
 ---
 
@@ -121,6 +121,7 @@ Pour patcher la logique de protection, l'APK a été décompilé avec Apktool :
 ```bash
 apktool d UnCrackable-Level3.apk -o uncrackable3
 ```
+<img width="1727" height="409" alt="image" src="https://github.com/user-attachments/assets/c59b6473-a8ad-47e4-aadf-740314b7c500" />
 
 Le projet décompilé contient :
 
@@ -131,6 +132,7 @@ smali/
 AndroidManifest.xml
 apktool.yml
 ```
+<img width="1542" height="428" alt="image" src="https://github.com/user-attachments/assets/4d770982-3411-4b3b-8e0d-db1fea28dc09" />
 
 ---
 
@@ -150,6 +152,7 @@ invoke-direct {p0, v0}, Lsg/vantagepoint/uncrackable3/MainActivity;->showDialog(
 ```
 
 Les vérifications root/debug/tamper sont exécutées avant que l'application ne continue normalement.
+<img width="2066" height="1452" alt="image" src="https://github.com/user-attachments/assets/eed5119d-871b-449d-85e0-78ea38367e60" />
 
 ---
 
@@ -168,6 +171,7 @@ Après modification du code smali, l'APK a été reconstruit :
 ```bash
 apktool b uncrackable3 -o UnCrackable-Level3-patched.apk
 ```
+<img width="1483" height="252" alt="image" src="https://github.com/user-attachments/assets/9754549a-f6e7-4015-b811-931f5a654ff2" />
 
 ---
 
@@ -178,6 +182,7 @@ L'APK reconstruit étant non signé, un nouveau keystore a été généré avec 
 ```bash
 keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
 ```
+<img width="1489" height="121" alt="image" src="https://github.com/user-attachments/assets/469ba440-f0a5-4d0a-95f7-1c3a2d4b222e" />
 
 ---
 
@@ -188,6 +193,7 @@ L'APK patché a été signé avec `apksigner` :
 ```bash
 apksigner sign --ks my-release-key.jks --out UnCrackable-Level3-final.apk UnCrackable-Level3-aligned.apk
 ```
+<img width="1502" height="51" alt="image" src="https://github.com/user-attachments/assets/c45d6fe8-c0e5-4f01-bf9f-cd6c87eab86f" />
 
 ---
 
@@ -200,6 +206,7 @@ adb install UnCrackable-Level3-final.apk
 ```
 
 Après installation, l'application s'ouvre normalement **sans afficher l'alerte de tampering**.
+<img width="342" height="576" alt="image" src="https://github.com/user-attachments/assets/31b48de1-fbd2-4e83-a21d-4b6ffe96967a" />
 
 ---
 
@@ -217,6 +224,7 @@ La bibliothèque native `libfoo.so` a été ouverte dans **Ghidra**. Le code nat
 - La logique de dissimulation et de vérification du secret
 
 ---
+<img width="1334" height="623" alt="image" src="https://github.com/user-attachments/assets/6be09367-ba7f-4518-90b5-863723956ecc" />
 
 ## 15. Décodage du Secret avec Python
 
@@ -225,19 +233,26 @@ Après analyse du code natif, une séquence d'octets encodée et une clé XOR on
 Un script Python a été créé pour décoder le secret :
 
 ```python
-# === DÉCODAGE INVERSE DE LA CLÉ ENCODÉE (MODE XOR) ===
-# Constante encodée sous matrice par le code C natif
-encoded = bytes.fromhex("1d0811130f1749150d0003195a1d1315080e5a0017081314")
+# === REVERSE DECRYPTION OF THE ENCODED KEY (XOR MODE) ===
+# Hexadecimal payload derived from the native C library
+payload = bytes.fromhex("1d0811130f1749150d0003195a1d1315080e5a0017081314")
 
-# Le masque itératif qui a originellement crypté le code, codé à la volée.
-xor_key = b"pizzapizzapizzapizzapizza"
+# The static pattern used for the initial encryption
+pattern = "pizzapizzapizzapizzapizza"
 
-# Un bitwise XOR dynamique zip() décrypte séquentiellement la clé pour révéler la string claire.
-secret = bytes(a ^ b for a, b in zip(encoded, xor_key))
-print("Clé secrète trouvée :", secret.decode())
+# Convert pattern to bytes for the XOR operation
+pattern_bytes = pattern.encode('ascii')
+
+# Per-byte dynamic XOR reconstruction using a generator expression to rebuild the secret bytes
+unveiled_secret = bytes(p ^ x for p, x in zip(payload, pattern_bytes))
+
+# Display the recovered string
+print("Found secret key:", unveiled_secret.decode())
 ```
+<img width="1130" height="493" alt="image" src="https://github.com/user-attachments/assets/8aa90be8-d0b6-4a6e-870b-d647d47deffc" />
 
 L'exécution du script révèle le secret :
+<img width="1489" height="90" alt="image" src="https://github.com/user-attachments/assets/93f650ce-a170-4d52-ad7e-e5b798f4fb00" />
 
 ```
 making owasp great again
@@ -259,6 +274,7 @@ L'application a affiché :
 Success!
 This is the correct secret.
 ```
+<img width="662" height="944" alt="image" src="https://github.com/user-attachments/assets/e8cde381-c232-462f-8e3f-15767ed7245e" />
 
 ---
 
